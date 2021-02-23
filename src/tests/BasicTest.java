@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
 public class BasicTest {
@@ -27,6 +28,12 @@ public class BasicTest {
 		this.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		this.driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		this.js = (JavascriptExecutor) driver;
+	}
+	
+	@AfterMethod
+	public void afterTest() {
+		driver.manage().deleteAllCookies();
+		driver.navigate().refresh();
 	}
 
 }
