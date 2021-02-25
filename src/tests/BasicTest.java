@@ -11,9 +11,9 @@ import org.testng.annotations.BeforeClass;
 
 public class BasicTest {
 
-	private WebDriver driver;
-	private WebDriverWait wait;
-	private JavascriptExecutor js;
+	protected WebDriver driver;
+	protected WebDriverWait wait;
+	protected JavascriptExecutor js;
 	protected String baseUrl = "http://demo.yo-meals.com";
 	String email = "customer@dummyid.com";
 	String password = "12345678a";
@@ -34,6 +34,7 @@ public class BasicTest {
 	public void afterTest() {
 		driver.manage().deleteAllCookies();
 		driver.navigate().refresh();
+		driver.quit();
 	}
 
 }
